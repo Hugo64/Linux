@@ -1,0 +1,24 @@
+Instalando VM no CentOS -->
+Acesse o site e segue o tutorial:
+http://tecadmin.net/install-oracle-virtualbox-on-centos-redhat-and-fedora/#
+
+Provavelmente haverá um erro após instalar e executar, para resolver o problema segue a seguinte solução-->
+
+Minha solução para este problema foi para fazer o seguinte:
+1) Vá para a pasta followning para descobrir o nome do ambiente:
+[root @ localhost ~] $ ls /usr/src/kernels
+2.6.32-431.5.1.el6.x86_64
+
+2) Abra o arquivo root ".bashrc" para edição com Nano.
+[root @ localhost ~] $ nano .bashrc
+
+3) A saída do comando para o primeiro passo foi utilizada para inserir uma linha no arquivo ".bashrc". Dentro do arquivo que eu adicionei a seguinte linha:
+export KERN_DIR=/usr/src/kernels/2.6.32-431.5.1.el6.x86_64
+
+4) Depois de salvar o arquivo que eu executava as linhas ".bashrc".
+[root @ localhost ~] $ source .bashrc
+
+5) Finalmente eu corri o script reconstrução VirtualBox:
+[root @ localhost ~] $ /etc/init.d/vboxdrv setup
+
+Obs: É importante deixar claro que após realizar o comando para descobrir a versão kernel: # ls /usr/src/kernels ele vai exibir a versão atual do seu kernel, então quando for inserir a linha dentro do # nano .bashrc altere a linha # kernels/2.6.32-431.5.1.el6.x86_64 para a versão atual do teu kernel. 
